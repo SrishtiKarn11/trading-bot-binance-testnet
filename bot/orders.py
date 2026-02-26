@@ -1,40 +1,37 @@
+# bot/orders.py
+from bot.logging_config import setup_logger
 import logging
 
-def place_market_order(client, symbol, side, quantity):
+def place_order(client, symbol, side, order_type, quantity, price=None):
+    # Initialize logging for this order type
+    setup_logger(order_type)
+
+    logging.info("Placing %s order: %s %s %s", order_type, symbol, side, quantity)
+
     try:
-        logging.info(f"Placing MARKET order: {symbol} {side} {quantity}")
+        if order_type.upper() == "MARKET":
+            order = client.futures_create_order(
+                symbol=symbol,
+                side=side,
+                type="MARKET",
+                quantity=quantity
+            )
+            logging.info("Market Order Response: %s", order)
 
-        order = client.futures_create_order(
-            symbol=symbol.upper(),
-            side=side.upper(),
-            type="MARKET",
-            quantity=quantity
-        )
+        elif order_type.upper() == "LIMIT":
+            order = client.futures_create_order(
+                symbol=symbol,
+                side=side,
+                type="LIMIT",
+                quantity=quantity,
+                price=price,
+                timeInForce="GTC"
+            )
+            logging.info("Limit Order Response: %s", order)
 
-        logging.info(f"Market Order Response: {order}")
+        print("✅ Order placed successfully!")
         return order
 
     except Exception as e:
-        logging.error(f"Market Order Error: {str(e)}")
-        raise
-
-
-def place_limit_order(client, symbol, side, quantity, price):
-    try:
-        logging.info(f"Placing LIMIT order: {symbol} {side} {quantity} @ {price}")
-
-        order = client.futures_create_order(
-            symbol=symbol.upper(),
-            side=side.upper(),
-            type="LIMIT",
-            timeInForce="GTC",
-            quantity=quantity,
-            price=price
-        )
-
-        logging.info(f"Limit Order Response: {order}")
-        return order
-
-    except Exception as e:
-        logging.error(f"Limit Order Error: {str(e)}")
-        raise
+        logging.error("%s Order Error: %s", order_type, e)
+        print(f"❌ {order_type} Order Error: {e}")

@@ -1,10 +1,8 @@
+# app.py
 import streamlit as st
 from bot.client import get_client
-from bot.orders import place_market_order, place_limit_order
+from bot.orders import place_order  # <- unified function
 from bot.logging_config import setup_logger
-
-# Setup logging
-setup_logger()
 
 # Page config
 st.set_page_config(
@@ -64,31 +62,24 @@ st.markdown("---")
 
 # ========== ORDER FORM ==========
 col1, col2 = st.columns(2)
-
 with col1:
     side = st.selectbox("Side", ["BUY", "SELL"])
-
 with col2:
     order_type = st.selectbox("Order Type", ["MARKET", "LIMIT"])
 
-quantity = st.number_input(
-    "Quantity",
-    min_value=0.0,
-    format="%.6f"
-)
+quantity = st.number_input("Quantity", min_value=0.0, format="%.6f")
 
 price = None
 if order_type == "LIMIT":
-    price = st.number_input(
-        "Limit Price",
-        min_value=0.0,
-        format="%.2f"
-    )
+    price = st.number_input("Limit Price", min_value=0.0, format="%.2f")
 
 st.markdown("---")
 
 # ========== PLACE ORDER BUTTON ==========
 if st.button("🚀 Place Order"):
+
+    # Setup logging per order type
+    setup_logger(order_type)
 
     try:
         # Basic validation
@@ -96,13 +87,10 @@ if st.button("🚀 Place Order"):
             st.warning("Please enter a valid quantity.")
             st.stop()
 
-        # Smart limit validation
         if order_type == "LIMIT":
             if price is None or price <= 0:
                 st.warning("Please enter a valid limit price.")
                 st.stop()
-
-            # Check unrealistic range
             if price < current_price * 0.5 or price > current_price * 1.5:
                 st.warning(
                     f"⚠ Limit price seems unrealistic.\n"
@@ -111,27 +99,25 @@ if st.button("🚀 Place Order"):
                 )
                 st.stop()
 
-        # Execute order
+        # Execute order using unified function
         with st.spinner("Placing order..."):
-            if order_type == "MARKET":
-                response = place_market_order(
-                    client, symbol, side, quantity
-                )
-            else:
-                response = place_limit_order(
-                    client, symbol, side, quantity, price
-                )
+            response = place_order(
+                client=client,
+                symbol=symbol,
+                side=side,
+                order_type=order_type,
+                quantity=quantity,
+                price=price
+            )
 
+        # Show order success
         st.success("✅ Order Placed Successfully!")
 
         st.markdown("### 📋 Order Details")
-
         colA, colB = st.columns(2)
-
         with colA:
             st.metric("Order ID", response.get("orderId"))
             st.metric("Status", response.get("status"))
-
         with colB:
             st.metric("Executed Qty", response.get("executedQty"))
             st.metric("Avg Price", response.get("avgPrice"))

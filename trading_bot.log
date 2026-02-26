@@ -81,3 +81,28 @@
 2026-02-25 22:59:37,355 | INFO | root | Binance Testnet Client initialized successfully
 2026-02-25 22:59:37,858 | INFO | root | Placing MARKET order: BTCUSDT SELL 0.002
 2026-02-25 22:59:38,062 | INFO | root | Market Order Response: {'orderId': 12547187507, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ745a9ff6ef64e2d6b5555c', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.002', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1772040582665}
+2026-02-26 10:48:11,375 | INFO | root | Logging initialized successfully
+2026-02-26 10:48:11,377 | INFO | root | Starting Trading Bot CLI
+2026-02-26 10:48:12,085 | INFO | root | Binance Testnet Client initialized successfully
+2026-02-26 10:48:12,085 | INFO | root | Placing MARKET order: BTCUSDT BUY 0.002
+2026-02-26 10:48:12,590 | INFO | root | Market Order Response: {'orderId': 12548740000, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ657a627d7ee479547237a0', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.002', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1772083097492}
+2026-02-26 10:53:20,253 | INFO | root | Logging initialized successfully for general order
+2026-02-26 10:53:20,882 | INFO | root | Binance Testnet Client initialized successfully
+2026-02-26 10:53:20,891 | INFO | root | Logging initialized successfully for MARKET order
+2026-02-26 10:53:20,893 | INFO | root | Placing MARKET order: BTCUSDT BUY 0.002
+2026-02-26 10:53:21,226 | INFO | root | Market Order Response: {'orderId': 12548750664, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJca3d732b90e8c8ad203d6c', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.002', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'BUY', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1772083406131}
+2026-02-26 10:53:31,956 | INFO | root | Logging initialized successfully for general order
+2026-02-26 10:53:32,246 | INFO | root | Binance Testnet Client initialized successfully
+2026-02-26 10:53:32,247 | INFO | root | Logging initialized successfully for LIMIT order
+2026-02-26 10:53:32,247 | INFO | root | Placing LIMIT order: BTCUSDT SELL 0.002
+2026-02-26 10:53:32,488 | ERROR | root | LIMIT Order Error: APIError(code=-4024): Limit price can't be lower than 64784.17.
+2026-02-26 10:54:15,566 | INFO | root | Logging initialized successfully for general order
+2026-02-26 10:54:16,080 | INFO | root | Binance Testnet Client initialized successfully
+2026-02-26 10:54:16,080 | INFO | root | Logging initialized successfully for MARKET order
+2026-02-26 10:54:16,080 | INFO | root | Placing MARKET order: BTCUSDT SELL 0.002
+2026-02-26 10:54:16,431 | INFO | root | Market Order Response: {'orderId': 12548757383, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJafe477814fadae2c92730b', 'price': '0.00', 'avgPrice': '0.00', 'origQty': '0.002', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'MARKET', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'MARKET', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1772083461337}
+2026-02-26 10:54:30,430 | INFO | root | Logging initialized successfully for general order
+2026-02-26 10:54:30,805 | INFO | root | Binance Testnet Client initialized successfully
+2026-02-26 10:54:30,807 | INFO | root | Logging initialized successfully for LIMIT order
+2026-02-26 10:54:30,807 | INFO | root | Placing LIMIT order: BTCUSDT SELL 0.002
+2026-02-26 10:54:31,150 | INFO | root | Limit Order Response: {'orderId': 12548757998, 'symbol': 'BTCUSDT', 'status': 'NEW', 'clientOrderId': 'x-Cb7ytekJ278bb3a0b608a5f5a1c788', 'price': '65000.00', 'avgPrice': '0.00', 'origQty': '0.002', 'executedQty': '0.000', 'cumQty': '0.000', 'cumQuote': '0.00000', 'timeInForce': 'GTC', 'type': 'LIMIT', 'reduceOnly': False, 'closePosition': False, 'side': 'SELL', 'positionSide': 'BOTH', 'stopPrice': '0.00', 'workingType': 'CONTRACT_PRICE', 'priceProtect': False, 'origType': 'LIMIT', 'priceMatch': 'NONE', 'selfTradePreventionMode': 'EXPIRE_MAKER', 'goodTillDate': 0, 'updateTime': 1772083476057}
